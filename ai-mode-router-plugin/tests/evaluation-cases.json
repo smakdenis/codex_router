@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Manual regression set for routing quality. Run each prompt in a new chat and judge the recommendation against the acceptance criteria; it does not execute tasks.",
+  "cases": [
+    {"id": "translate-short", "prompt": "Переведи этот абзац на английский, сохранив деловой тон.", "expected": {"model": "GPT-5.6 Luna", "effort": "Light", "speed": "Standard"}, "acceptance": ["No unnecessary upgrade", "No invented exact token forecast"]},
+    {"id": "code-edit-tested", "prompt": "Исправь одну ошибку в изолированном TypeScript-компоненте и запусти тесты.", "expected": {"model": "GPT-5.6 Luna", "effort": "Medium", "speed": "Standard"}, "acceptance": ["Mentions tests as quality control", "Does not choose Sol without a named risk"]},
+    {"id": "bank-letter", "prompt": "Подготовь спокойный ответ банку на вопросы по временному кассовому разрыву; факты приложены.", "expected": {"model": "GPT-5.6 Terra", "effort": "Medium", "speed": "Standard"}, "acceptance": ["Names external professional consequence", "Does not route to Luna"]},
+    {"id": "ambiguous-production-bug", "prompt": "Найди причину редкого бага в production: несколько сервисов, неполные логи и возможные гонки данных.", "expected": {"model": "GPT-5.6 Sol", "effort": "High", "speed": "Standard"}, "acceptance": ["Names cross-service ambiguity", "Avoids Ultra unless independent workstreams are requested"]},
+    {"id": "urgent-summary", "prompt": "Срочно: кратко суммируй приложенный отчёт по продажам за неделю.", "expected": {"model": "GPT-5.6 Luna", "effort": "Medium", "speed": "Fast"}, "acceptance": ["Mentions Fast costs more", "Does not upgrade model only for urgency"]},
+    {"id": "medical-decision", "prompt": "Помоги принять решение о схеме лечения по моим симптомам и анализам.", "expected": {"model": "GPT-5.6 Sol", "effort": "High", "speed": "Standard"}, "acceptance": ["Requires current authoritative sources", "Uses a high-responsibility quality floor"]}
+  ]
+}

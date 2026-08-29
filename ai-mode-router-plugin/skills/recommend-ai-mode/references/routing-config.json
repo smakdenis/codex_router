@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "validAsOf": "2026-08-28",
+  "defaultProfile": "economy",
+  "profiles": {
+    "economy": {"label": "Экономия", "rule": "Choose the lowest expected total cost of an accepted result."},
+    "balance": {"label": "Баланс", "rule": "Prefer one tier higher when redo risk is material and verification is weak."},
+    "highResponsibility": {"label": "Высокая ответственность", "rule": "Use the defined quality floor and current authoritative sources for consequential decisions."}
+  },
+  "models": {
+    "luna": {"displayName": "GPT-5.6 Luna", "relativeCost": "very_low", "bestFor": ["clear bounded work", "mechanical transformations", "classification", "simple checking"], "efforts": ["Light", "Medium"], "doNotUseFor": ["high-stakes judgment", "subtle cross-file interactions", "deep research"]},
+    "terra": {"displayName": "GPT-5.6 Terra", "relativeCost": "low", "bestFor": ["professional writing", "normal tool use", "several constraints", "well-scoped repository work"], "efforts": ["Light", "Medium", "High"], "doNotUseFor": ["exceptionally ambiguous or consequential work without strong verification"]},
+    "sol": {"displayName": "GPT-5.6 Sol", "relativeCost": "high", "bestFor": ["consequential ambiguity", "deep research", "subtle dependencies", "complex production debugging"], "efforts": ["Medium", "High", "Extra High", "Max"], "doNotUseFor": ["routine bounded tasks with deterministic checks"]}
+  },
+  "speed": {"default": "Standard", "urgent": "Fast", "urgentTokens": ["срочно", "[срочно]", "urgent", "ASAP"], "note": "Fast costs more; do not reduce model quality to obtain speed."},
+  "costTiers": ["очень низкая", "низкая", "средняя", "высокая"],
+  "qualityFloors": {"routineFinancialSpreadsheet": "GPT-5.6 Terra · High with formula checks", "medicalLegalFinancialSafetyCritical": "GPT-5.6 Sol · High or greater with current authoritative sources"},
+  "verification": {"code": ["tests", "lint", "build", "diff review"], "calculationOrSpreadsheet": ["recalculation", "invariant checks"], "dataChange": ["schema validation", "row-count validation"], "researchOrHighStakes": ["current authoritative sources", "cross-checking"], "documentOrPresentation": ["render", "visual QA"]},
+  "sessionFeedback": {"accepted": "Keep or consider one cheaper tier for a similarly bounded task.", "reworked": "Raise the relevant quality floor or ask the missing clarifier next time.", "tooExpensive": "Look first for safe context reduction, decomposition, or deterministic verification.", "wrongModel": "Name the specific failure mode and adjust only that boundary."},
+  "nativeLimitations": ["Cannot read text before it is sent.", "Cannot switch the active model, effort, or speed automatically.", "Cannot persist feedback reliably between chats without an external store."]
+}

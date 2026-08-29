@@ -1,0 +1,7 @@
+interface:
+  display_name: "AI Mode Router v3"
+  short_description: "Экономит с учётом риска переделки"
+  brand_color: "#6D5EF7"
+  default_prompt: "Используй $recommend-ai-mode и подбери самый экономичный надёжный режим для задачи: [вставьте запрос]."
+policy:
+  allow_implicit_invocation: true
