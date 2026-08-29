@@ -3,23 +3,30 @@
   "version": "3.0.0+codex.20260828144420",
   "description": "Chooses the lowest expected-cost ChatGPT Work configuration that preserves result quality.",
   "author": {
-    "name": "Denis"
+    "name": "Denis",
+    "url": "https://github.com/smakdenis"
   },
+  "homepage": "https://github.com/smakdenis/codex_router",
+  "repository": "https://github.com/smakdenis/codex_router",
+  "license": "MIT",
+  "keywords": ["ai", "routing", "models", "cost", "chatgpt", "codex"],
   "skills": "./skills/",
   "interface": {
     "displayName": "AI Mode Router v3",
-    "shortDescription": "\u042d\u043a\u043e\u043d\u043e\u043c\u0438\u0442 \u0442\u043e\u043a\u0435\u043d\u044b \u0441 \u0443\u0447\u0451\u0442\u043e\u043c \u0440\u0438\u0441\u043a\u0430 \u043f\u0435\u0440\u0435\u0434\u0435\u043b\u043a\u0438.",
-    "longDescription": "\u0412\u044b\u0431\u0438\u0440\u0430\u0435\u0442 \u043c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u0443\u044e \u043e\u0436\u0438\u0434\u0430\u0435\u043c\u0443\u044e \u0441\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d\u0438\u044f: \u0443\u0447\u0438\u0442\u044b\u0432\u0430\u0435\u0442 \u0440\u0430\u0441\u0445\u043e\u0434 \u0442\u043e\u043a\u0435\u043d\u043e\u0432, \u0440\u0438\u0441\u043a \u043f\u0435\u0440\u0435\u0434\u0435\u043b\u043a\u0438, \u043d\u0435\u043e\u0434\u043d\u043e\u0437\u043d\u0430\u0447\u043d\u043e\u0441\u0442\u044c, \u043f\u0440\u043e\u0432\u0435\u0440\u044f\u0435\u043c\u043e\u0441\u0442\u044c, \u0438\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b, \u043a\u043e\u043d\u0442\u0435\u043a\u0441\u0442 \u0438 \u0441\u0440\u043e\u0447\u043d\u043e\u0441\u0442\u044c. \u041f\u043e\u043a\u0430\u0437\u044b\u0432\u0430\u0435\u0442 \u0443\u0432\u0435\u0440\u0435\u043d\u043d\u043e\u0441\u0442\u044c \u0438 \u0441\u043f\u043e\u0441\u043e\u0431 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u043e.",
+    "shortDescription": "Economical AI routing with redo-risk awareness.",
+    "longDescription": "Recommends the lowest expected-cost model, effort, and speed while preserving result quality. It considers ambiguity, verification, context, urgency, and the likely cost of a redo.",
     "developerName": "Denis",
     "category": "Productivity",
-    "capabilities": [
-      "Interactive"
-    ],
+    "capabilities": ["Interactive"],
+    "websiteURL": "https://github.com/smakdenis/codex_router",
+    "privacyPolicyURL": "https://github.com/smakdenis/codex_router/blob/main/docs/PRIVACY.md",
     "defaultPrompt": [
-      "\u041f\u043e\u0434\u0431\u0435\u0440\u0438 \u0441\u0430\u043c\u044b\u0439 \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u043d\u044b\u0439 \u043d\u0430\u0434\u0451\u0436\u043d\u044b\u0439 \u0440\u0435\u0436\u0438\u043c: [\u0432\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0437\u0430\u043f\u0440\u043e\u0441]",
-      "\u0421\u0440\u043e\u0447\u043d\u043e: \u043f\u043e\u0434\u0431\u0435\u0440\u0438 \u044d\u043a\u043e\u043d\u043e\u043c\u0438\u0447\u043d\u044b\u0439 \u0440\u0435\u0436\u0438\u043c: [\u0432\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0437\u0430\u043f\u0440\u043e\u0441]",
-      "\u0421\u043e\u043a\u0440\u0430\u0442\u0438 \u0440\u0430\u0441\u0445\u043e\u0434 \u0442\u043e\u043a\u0435\u043d\u043e\u0432 \u0434\u043b\u044f \u0437\u0430\u0434\u0430\u0447\u0438: [\u0432\u0441\u0442\u0430\u0432\u044c\u0442\u0435 \u0437\u0430\u043f\u0440\u043e\u0441]"
+      "Choose the most economical reliable mode for this task: [paste task]",
+      "Urgent: choose the most economical reliable mode for this task: [paste task]",
+      "Подбери самый экономичный надёжный режим: [вставьте запрос]"
     ],
-    "brandColor": "#6D5EF7"
+    "brandColor": "#000000",
+    "composerIcon": "./assets/icon-ai-pencil.png",
+    "logo": "./assets/icon-ai-pencil.png"
   }
 }

@@ -1,0 +1,21 @@
+{
+  "name": "ai-mode-router-marketplace",
+  "interface": {
+    "displayName": "AI Mode Router"
+  },
+  "plugins": [
+    {
+      "name": "ai-mode-router",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/smakdenis/codex_router.git",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
