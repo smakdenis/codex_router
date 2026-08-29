@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.0.1
+
+- Add public marketplace metadata, installation guidance, support and legal links.
+- Add a production icon and public-review test scenarios.
+
 ## 3.0.0
 
 - Route by expected accepted-result cost, including redo risk.

@@ -1,6 +1,6 @@
 {
   "name": "ai-mode-router",
-  "version": "3.0.0+codex.20260828144420",
+  "version": "3.0.1",
   "description": "Chooses the lowest expected-cost ChatGPT Work configuration that preserves result quality.",
   "author": {
     "name": "Denis",
@@ -13,13 +13,14 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "AI Mode Router v3",
-    "shortDescription": "Economical AI routing with redo-risk awareness.",
+    "shortDescription": "Economical AI mode routing",
     "longDescription": "Recommends the lowest expected-cost model, effort, and speed while preserving result quality. It considers ambiguity, verification, context, urgency, and the likely cost of a redo.",
     "developerName": "Denis",
     "category": "Productivity",
     "capabilities": ["Interactive"],
     "websiteURL": "https://github.com/smakdenis/codex_router",
     "privacyPolicyURL": "https://github.com/smakdenis/codex_router/blob/main/docs/PRIVACY.md",
+    "termsOfServiceURL": "https://github.com/smakdenis/codex_router/blob/main/docs/TERMS.md",
     "defaultPrompt": [
       "Choose the most economical reliable mode for this task: [paste task]",
       "Urgent: choose the most economical reliable mode for this task: [paste task]",

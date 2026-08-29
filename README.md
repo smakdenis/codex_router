@@ -114,6 +114,11 @@ The router recommends the mode first. Reply `выполняй` only after switch
 
 See the [privacy note](docs/PRIVACY.md) and the [API roadmap](docs/API-ROADMAP.md) for the optional future layer that could offer opt-in persistent calibration.
 
+## Support
+
+For installation questions, bug reports, and feature requests, use the
+[GitHub issue tracker](https://github.com/smakdenis/codex_router/issues).
+
 ## Development
 
 ```bash
@@ -121,6 +126,7 @@ python3 scripts/validate_router_resources.py
 ```
 
 The manual regression corpus lives in [tests/evaluation-cases.json](tests/evaluation-cases.json).
+The public-review scenarios are in [tests/submission-test-cases.md](tests/submission-test-cases.md).
 
 ## License
 
