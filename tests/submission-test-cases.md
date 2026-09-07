@@ -6,7 +6,7 @@ These cases are self-contained and require no account, credential, file, or netw
 
 1. **Short translation**
    - Prompt: `Translate this short business paragraph into English.`
-   - Expected behavior: Recommend Luna · Light · Standard; classify cost as very low or low; do not execute the translation yet.
+   - Expected behavior: Recommend Luna · Low · Standard; classify cost as very low or low; do not execute the translation yet.
    - Expected shape: task, mode, cost, confidence, concise economic reason, and the `выполняй` handoff.
 
 2. **Tested isolated code change**

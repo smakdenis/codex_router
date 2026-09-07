@@ -1,6 +1,6 @@
 {
   "name": "ai-mode-router",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "Chooses the lowest expected-cost ChatGPT Work configuration that preserves result quality.",
   "author": {
     "name": "Denis",
@@ -12,9 +12,9 @@
   "keywords": ["ai", "routing", "models", "cost", "chatgpt", "codex"],
   "skills": "./skills/",
   "interface": {
-    "displayName": "AI Mode Router v3",
+    "displayName": "AI Mode Router v4",
     "shortDescription": "Economical AI mode routing",
-    "longDescription": "Recommends the lowest expected-cost model, effort, and speed while preserving result quality. It considers ambiguity, verification, context, urgency, and the likely cost of a redo.",
+    "longDescription": "Routes work across GPT-5.6 Luna, Terra, Sol, and GPT-6 Astra to minimize the expected cost of an accepted result. It considers ambiguity, verification, context, urgency, and redo risk.",
     "developerName": "Denis",
     "category": "Productivity",
     "capabilities": ["Interactive"],

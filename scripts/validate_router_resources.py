@@ -21,12 +21,15 @@ def load_json(path: Path) -> dict:
 
 config = load_json(CONFIG_PATH)
 cases = load_json(CASES_PATH)
-if config.get("schemaVersion") != 1 or cases.get("schemaVersion") != 1:
+if config.get("schemaVersion") != 2 or cases.get("schemaVersion") != 1:
     fail("unsupported schema version")
 models = config.get("models", {})
-if set(models) != {"luna", "terra", "sol"}:
-    fail("config must declare luna, terra, and sol")
+if set(models) != {"luna", "terra", "sol", "astra"}:
+    fail("config must declare luna, terra, sol, and astra")
 valid_models = {model["displayName"]: set(model["efforts"]) for model in models.values()}
+fallbacks = config.get("fallbacks", {})
+if set(fallbacks) != set(models) or any(target is not None and target not in models for target in fallbacks.values()):
+    fail("fallbacks must declare a known fallback or null for every model")
 valid_speeds = {config["speed"]["default"], config["speed"]["urgent"]}
 seen_ids: set[str] = set()
 for case in cases.get("cases", []):

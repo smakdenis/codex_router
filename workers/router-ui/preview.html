@@ -1,0 +1,3 @@
+<!doctype html><meta charset="utf-8"><title>AI Mode Router preview</title>
+<main><h2>Рекомендация готова</h2><p>Режим: Terra · Medium · Standard</p><button data-action="выполняй">Подтвердить и выполнить</button><button data-action="подбери дешевле">Дешевле</button><button data-action="подбери надёжнее">Надёжнее</button><pre id="result">Выберите действие.</pre></main>
+<script>document.querySelectorAll('button').forEach(b=>b.onclick=()=>document.querySelector('#result').textContent='В чат будет отправлено: '+b.dataset.action)</script>

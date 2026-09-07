@@ -1,5 +1,5 @@
 interface:
-  display_name: "AI Mode Router v3"
+  display_name: "AI Mode Router v4"
   short_description: "Choose the cheapest reliable AI mode"
   icon_small: "./assets/icon-ai-pencil.png"
   icon_large: "./assets/icon-ai-pencil.png"

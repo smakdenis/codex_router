@@ -3,7 +3,7 @@ name: recommend-ai-mode
 description: "Route a new task to the lowest expected-cost current ChatGPT Work or Codex model, effort, and speed that preserve result quality. Use while this plugin is enabled or explicitly invoked; do not re-route an execution continuation."
 ---
 
-# AI Mode Router v3
+# AI Mode Router v4
 
 Choose the configuration with the lowest **expected total cost of an accepted result**, not simply the lowest token rate. Consider prompt and history, attached files, tool results, reasoning, output, and the likely cost of a redo. Do not lower accuracy, safety, verification, or finish quality merely to save tokens.
 
@@ -13,7 +13,9 @@ Read [routing-config.json](references/routing-config.json) for the current routi
 
 For a new task, return a recommendation only; do not perform the task in the same turn. End with the localized equivalent of `Переключите настройки и напишите «выполняй»`.
 
-On `выполняй`, perform the most recently routed task without routing again. If source material is missing, ask only for it. If several tasks are plausible, identify them by short restatement. Never claim that settings were switched automatically.
+On a confirmation action, perform the most recently routed task without routing again. In the skills-only fallback, accept `выполняй`. If source material is missing, ask only for it. If several tasks are plausible, identify them by short restatement. Never claim that settings were switched automatically.
+
+On `подбери дешевле`, re-route the same task one tier down only when the defined quality floor still holds; otherwise explain briefly why a cheaper route is unsafe. On `подбери надёжнее`, raise the recommendation one tier or strengthen its verification plan, whichever addresses the named risk with lower expected cost. Do not perform the task on either choice.
 
 If one missing fact would materially change the model tier or quality floor, ask exactly one short clarifying question before routing. Do not ask when a safe economical default is clear. Examples: whether a draft will be sent externally, whether a calculation will drive a decision, or whether a request is for a summary rather than an authoritative conclusion.
 
@@ -25,8 +27,11 @@ If one missing fact would materially change the model tier or quality floor, ask
 4. When deterministic verification can catch the cheaper tier's likely errors, prefer the cheaper tier plus that check. Never use verification as a substitute for the minimum capability required to understand the task.
 5. Estimate redo risk. If a cheaper run is likely to need substantive rework, choose the cheapest configuration with the lower expected total cost instead.
 6. Use Standard speed unless the user explicitly says `срочно`, `[срочно]`, `urgent`, or `ASAP` as an urgency instruction. Negated, quoted, and meta mentions do not count. With true urgency, keep the quality-preserving model and effort, select Fast if available, and mention that it costs more.
+7. If the recommended model is unavailable, use its declared fallback. State the substitution and preserve the required quality check.
 
-Use the role boundaries in the configuration: Luna for clear bounded work, Terra for normal professional judgment and tool use, Sol for consequential ambiguity or subtle interaction. Avoid Ultra and subagents unless genuinely independent workstreams make their extra token cost worthwhile.
+Use the role boundaries in the configuration: Luna for clear bounded work, Terra for normal professional judgment and tool use, Sol for consequential ambiguity or subtle interaction, and Astra for the hardest end-to-end work where its stronger reasoning, computer use, or long-horizon coherence materially lowers failure or redo risk. Do not choose Astra merely because it is newer. Use subagents only for genuinely independent workstreams whose parallelism justifies their extra cost.
+
+For Astra, never recommend `None` reasoning because the model does not support it. Use Low as its economical starting point and increase effort only for a named failure mode. If EU data residency applies, keep Astra on Standard speed because Fast is unavailable there. When residency is unknown, do not infer it; mention the limitation only when it affects the recommendation.
 
 ## Output
 
@@ -46,6 +51,8 @@ Reply in the user's language and keep the route short:
 Add at most one `Как сократить контекст` line, and only for a concrete safe reduction: irrelevant files, unnecessary chat history, a narrower date/source range, a defined output length, or unused tools. Never suggest dropping information needed for correctness.
 
 For a large task, recommend safe decomposition only when it saves material work: perform cheap mechanical extraction or cleaning as a separately routed Luna task, then route the final judgment or synthesis independently. Do not present several models as one automatically executed setup.
+
+When a draft and a review are materially cheaper than one high-effort run, recommend a two-stage plan: a bounded Luna draft followed by Terra review. Use this only when the final reviewer can reliably check the draft.
 
 ## Quality floors and feedback
 

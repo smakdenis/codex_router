@@ -11,6 +11,10 @@ available model, reasoning effort, and speed for each new task—without pretend
 first answer is always the cheapest outcome. It accounts for ambiguity, verification, context size,
 and the risk of paying for a redo.
 
+Version 4 adds GPT-6 Astra above the existing GPT-5.6 Luna, Terra, and Sol tiers. Astra is reserved
+for the hardest end-to-end workflows where stronger reasoning and long-horizon coherence are likely
+to cost less overall than a failed cheaper run.
+
 The plugin does not call external services, send data anywhere, or change your model settings. It
 gives a short recommendation; you choose the settings and then reply `выполняй` to start the task.
 
@@ -24,6 +28,10 @@ gives a short recommendation; you choose the settings and then reply `выпол
 - Uses **Fast** only when the request explicitly says `срочно`, `urgent`, or `ASAP`.
 - Returns a qualitative cost tier, confidence level, and the reason the next cheaper option is unsafe.
 - Asks one focused clarification when it can materially reduce cost or prevent overkill.
+- Uses GPT-6 Astra only for a concrete capability or redo-risk reason; it never upgrades merely
+  because Astra is the newest model.
+- Never recommends `None` effort for Astra, and keeps Astra on Standard when EU data residency
+  makes Fast unavailable.
 
 ## Example
 
@@ -104,6 +112,12 @@ After installation, write a normal task and let ChatGPT select the router when a
 ```
 
 The router recommends the mode first. Reply `выполняй` only after switching the settings yourself.
+
+## Optional confirmation button
+
+The skills-only edition works without a server and uses `выполняй` as its confirmation fallback. The repository also includes an optional Cloudflare Worker foundation for an MCP inline confirmation card. It is not deployed by default and stores no prompts or user data. See [workers/router-ui](workers/router-ui).
+
+The card provides **Подтвердить и выполнить**, **Дешевле**, and **Надёжнее**. The latter two re-route the same task; they never silently change ChatGPT settings or start work.
 
 ## Limits and privacy
 

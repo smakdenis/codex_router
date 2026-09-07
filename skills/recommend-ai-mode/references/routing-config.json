@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "validAsOf": "2026-08-28",
+  "schemaVersion": 2,
+  "validAsOf": "2026-09-07",
   "defaultProfile": "economy",
   "profiles": {
     "economy": {"label": "Экономия", "rule": "Choose the lowest expected total cost of an accepted result."},
@@ -8,13 +8,15 @@
     "highResponsibility": {"label": "Высокая ответственность", "rule": "Use the defined quality floor and current authoritative sources for consequential decisions."}
   },
   "models": {
-    "luna": {"displayName": "GPT-5.6 Luna", "relativeCost": "very_low", "bestFor": ["clear bounded work", "mechanical transformations", "classification", "simple checking"], "efforts": ["Light", "Medium"], "doNotUseFor": ["high-stakes judgment", "subtle cross-file interactions", "deep research"]},
-    "terra": {"displayName": "GPT-5.6 Terra", "relativeCost": "low", "bestFor": ["professional writing", "normal tool use", "several constraints", "well-scoped repository work"], "efforts": ["Light", "Medium", "High"], "doNotUseFor": ["exceptionally ambiguous or consequential work without strong verification"]},
-    "sol": {"displayName": "GPT-5.6 Sol", "relativeCost": "high", "bestFor": ["consequential ambiguity", "deep research", "subtle dependencies", "complex production debugging"], "efforts": ["Medium", "High", "Extra High", "Max"], "doNotUseFor": ["routine bounded tasks with deterministic checks"]}
+    "luna": {"displayName": "GPT-5.6 Luna", "modelId": "gpt-5.6-luna", "relativeCost": "very_low", "bestFor": ["clear bounded work", "mechanical transformations", "classification", "simple checking"], "efforts": ["Low", "Medium", "High", "Extra High", "Max"], "doNotUseFor": ["high-stakes judgment", "subtle cross-file interactions", "deep research"]},
+    "terra": {"displayName": "GPT-5.6 Terra", "modelId": "gpt-5.6-terra", "relativeCost": "low", "bestFor": ["professional writing", "normal tool use", "several constraints", "well-scoped repository work"], "efforts": ["Low", "Medium", "High", "Extra High", "Max"], "doNotUseFor": ["exceptionally ambiguous or consequential work without strong verification"]},
+    "sol": {"displayName": "GPT-5.6 Sol", "modelId": "gpt-5.6-sol", "relativeCost": "medium_high", "bestFor": ["consequential ambiguity", "deep research", "subtle dependencies", "complex production debugging"], "efforts": ["Low", "Medium", "High", "Extra High", "Max"], "doNotUseFor": ["routine bounded tasks with deterministic checks"]},
+    "astra": {"displayName": "GPT-6 Astra", "modelId": "gpt-6-astra", "relativeCost": "high", "bestFor": ["hardest end-to-end work", "long-horizon agentic workflows", "complex computer use", "large cross-domain synthesis", "high-consequence work with weak verification"], "efforts": ["Low", "Medium", "High", "Extra High", "Max"], "doNotUseFor": ["routine bounded tasks", "high-volume transformations", "work where a cheaper tier plus deterministic verification is reliable"], "limitations": ["No None reasoning effort", "Fast is unavailable with EU data residency"]}
   },
+  "fallbacks": {"astra": "sol", "sol": "terra", "terra": "luna", "luna": null},
   "speed": {"default": "Standard", "urgent": "Fast", "urgentTokens": ["срочно", "[срочно]", "urgent", "ASAP"], "note": "Fast costs more; do not reduce model quality to obtain speed."},
-  "costTiers": ["очень низкая", "низкая", "средняя", "высокая"],
-  "qualityFloors": {"routineFinancialSpreadsheet": "GPT-5.6 Terra · High with formula checks", "medicalLegalFinancialSafetyCritical": "GPT-5.6 Sol · High or greater with current authoritative sources"},
+  "costTiers": ["очень низкая", "низкая", "средняя", "высокая", "очень высокая"],
+  "qualityFloors": {"routineFinancialSpreadsheet": "GPT-5.6 Terra · High with formula checks", "medicalLegalFinancialSafetyCritical": "GPT-5.6 Sol · High or greater with current authoritative sources", "highestComplexityEndToEnd": "GPT-6 Astra · High when long-horizon complexity or weak verification makes a cheaper tier likely to fail"},
   "verification": {"code": ["tests", "lint", "build", "diff review"], "calculationOrSpreadsheet": ["recalculation", "invariant checks"], "dataChange": ["schema validation", "row-count validation"], "researchOrHighStakes": ["current authoritative sources", "cross-checking"], "documentOrPresentation": ["render", "visual QA"]},
   "sessionFeedback": {"accepted": "Keep or consider one cheaper tier for a similarly bounded task.", "reworked": "Raise the relevant quality floor or ask the missing clarifier next time.", "tooExpensive": "Look first for safe context reduction, decomposition, or deterministic verification.", "wrongModel": "Name the specific failure mode and adjust only that boundary."},
   "nativeLimitations": ["Cannot read text before it is sent.", "Cannot switch the active model, effort, or speed automatically.", "Cannot persist feedback reliably between chats without an external store."]
